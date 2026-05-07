@@ -23,6 +23,6 @@ jobs:
         id: deploy-to-function-app
         with:
           app-name: costoptimizerfunc123
-          package: ./function-app.zip
-          scm-do-build-during-deployment: false
+          package: ./function-app
+          # scm-do-build-during-deployment: false
         
