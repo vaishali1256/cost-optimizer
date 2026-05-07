@@ -1,0 +1,25 @@
+name: Terraform Infra Destroy
+
+on: workflow_dispatch
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: azure/login@v3
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Init
+        run: terraform init
+        working-directory: terraform
+
+      - name: Apply
+        run: terraform destroy -auto-approve
+        working-directory: terraform
