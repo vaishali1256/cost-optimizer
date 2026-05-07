@@ -23,5 +23,5 @@ jobs:
         id: deploy-to-function-app
         with:
           app-name: costoptimizerfunc123
-          package: function-app
-          # publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+          package: ./function-app
+        
