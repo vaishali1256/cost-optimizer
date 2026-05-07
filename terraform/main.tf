@@ -34,11 +34,12 @@ resource "azurerm_linux_function_app" "func" {
   storage_account_name       = azurerm_storage_account.sa.name
   storage_account_access_key = azurerm_storage_account.sa.primary_access_key
 
-  site_config {}
-
-  app_settings = {
-    FUNCTIONS_WORKER_RUNTIME = "python"
-    WEBSITE_RUN_FROM_PACKAGE = "1"
-    SUBSCRIPTION_ID          = "aed5d8c7-2fe3-47cb-bec9-c2d3af6b5217"
+  site_config {
   }
+
+#   app_settings = {
+#     FUNCTIONS_WORKER_RUNTIME = "python"
+#     WEBSITE_RUN_FROM_PACKAGE = "1"
+#     SUBSCRIPTION_ID          = "aed5d8c7-2fe3-47cb-bec9-c2d3af6b5217"
+#   }
 }
