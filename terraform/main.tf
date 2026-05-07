@@ -26,23 +26,20 @@ resource "azurerm_service_plan" "plan" {
   sku_name            = "B1"
 }
 
-resource "azurerm_function_app" "func" {
+resource "azurerm_linux_function_app" "func" {
   name                       = var.function_app_name
   location                   = var.location
   resource_group_name        = azurerm_resource_group.rg.name
-  app_service_plan_id            = azurerm_service_plan.plan.id
+  service_plan_id            = azurerm_service_plan.plan.id
   storage_account_name       = azurerm_storage_account.sa.name
   storage_account_access_key = azurerm_storage_account.sa.primary_access_key
-  os_type                    = "linux"
-  version                    = "~4"
 
   site_config {
-    linux_fx_version = "python|3.9"
   }
 
-  app_settings = {
-    FUNCTIONS_WORKER_RUNTIME = "python"
-    WEBSITE_RUN_FROM_PACKAGE = "1"
-    SUBSCRIPTION_ID          = "aed5d8c7-2fe3-47cb-bec9-c2d3af6b5217"
-  }
+#   app_settings = {
+#     FUNCTIONS_WORKER_RUNTIME = "python"
+#     WEBSITE_RUN_FROM_PACKAGE = "1"
+#     SUBSCRIPTION_ID          = "aed5d8c7-2fe3-47cb-bec9-c2d3af6b5217"
+#   }
 }
