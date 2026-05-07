@@ -24,5 +24,7 @@ jobs:
         with:
           app-name: costoptimizerfunc123
           package: ./function-app
+          scm-do-build-during-deployment: true
+          enable-oryx-build: true
           # scm-do-build-during-deployment: false
         
