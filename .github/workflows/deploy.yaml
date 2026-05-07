@@ -1,9 +1,6 @@
 name: Deploy Function
 
-on:
-  push:
-    paths:
-      - 'function-app/**'
+on: workflow_dispatch
 
 jobs:
   deploy:
@@ -19,7 +16,8 @@ jobs:
 
       - name: Deploy Function
         uses: Azure/functions-action@v1
+        id: deploy-to-function-app
         with:
           app-name: costoptimizerfunc123
           package: function-app
-          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+          # publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
